@@ -73,7 +73,10 @@ public class Main {
 
                 int correctA = 0;
                 int correctB = 0;
-                int wrong = 0;
+
+                // ADDED: separate wrong counters
+                int wrongA = 0;
+                int wrongB = 0;
 
                 // PART A
                 System.out.println("PART A");
@@ -107,19 +110,20 @@ public class Main {
                         correctA++;
                         System.out.println("Correct!");
                     } else {
-                        wrong++;
+                        wrongA++;
                         System.out.println("Incorrect.");
                     }
 
-                    System.out.println("Score: " + (correctA + correctB) + " correct, " + wrong + " wrong");
+                    System.out.println("Score: " + (correctA + correctB) + " correct, " + (wrongA + wrongB) + " wrong");
 
-                    if (wrong >= 4) {
-                        System.out.println("You cannot pass anymore. Test ended.");
+                    // stop Part A at 2 wrong
+                    if (wrongA == 2) {
+                        System.out.println("You got 2 wrong in Part A. Test ended.");
                         break;
                     }
                 }
 
-                if (wrong >= 4) continue;
+                if (wrongA == 2) continue;
                 if (correctA < 4) {
                     System.out.println("You scored less than 4 in Part A. Cannot pass.");
                     continue;
@@ -157,19 +161,20 @@ public class Main {
                         correctB++;
                         System.out.println("Correct!");
                     } else {
-                        wrong++;
+                        wrongB++;
                         System.out.println("Incorrect.");
                     }
 
-                    System.out.println("Score: " + (correctA + correctB) + " correct, " + wrong + " wrong");
+                    System.out.println("Score: " + (correctA + correctB) + " correct, " + (wrongA + wrongB) + " wrong");
 
-                    if (wrong >= 4) {
-                        System.out.println("You cannot pass anymore. Test ended.");
+                    // stop Part B at 2 wrong
+                    if (wrongB == 2) {
+                        System.out.println("You got 2 wrong in Part B. Test ended.");
                         break;
                     }
                 }
 
-                if (wrong >= 4) continue;
+                if (wrongB == 2) continue;
 
                 // RESULTS
                 int total = correctA + correctB;
@@ -190,7 +195,7 @@ public class Main {
                 System.out.print("Password: ");
                 String pw = sc.nextLine();
 
-                if (!pw.equals("admin123")) {
+                if (!pw.equals("admin")) {
                     System.out.println("Incorrect password.");
                     continue;
                 }
